@@ -1,7 +1,5 @@
 Flask
+matplotlib
 numpy
 pandas
 seaborn
-matplotlib
-
--e .

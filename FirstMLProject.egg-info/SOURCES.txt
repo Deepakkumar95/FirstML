@@ -1,0 +1,7 @@
+README.md
+setup.py
+FirstMLProject.egg-info/PKG-INFO
+FirstMLProject.egg-info/SOURCES.txt
+FirstMLProject.egg-info/dependency_links.txt
+FirstMLProject.egg-info/requires.txt
+FirstMLProject.egg-info/top_level.txt
