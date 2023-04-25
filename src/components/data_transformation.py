@@ -11,6 +11,7 @@ from sklearn.preprocessing import OrdinalEncoder, StandardScaler
 from sklearn.impute import SimpleImputer
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
+from src.utils import save_obj
 
 @dataclass()
 class DataTransformationConfig:
@@ -18,15 +19,15 @@ class DataTransformationConfig:
 
 class DataTransformation:
     def __init__(self):
-        self.data_transformation_config= DataTransformation()
+        self.data_transformation_config= DataTransformationConfig()
 
     def get_data_transformation_object(self):
         try:
             logging.info("data transformation initiated")
 
             # Define which columns should be ordinal-encoded and which should be scaled
-            categorical_cols = X.select_dtypes(include='object').columns
-            numerical_cols = X.select_dtypes(exclude='object').columns
+            categorical_cols = ['cut', 'color','clarity']
+            numerical_cols = ['carat', 'depth','table', 'x', 'y', 'z']
 
             # Define the custom ranking for each ordinal variable
             cut_categories = ['Fair', 'Good', 'Very Good','Premium','Ideal']
@@ -103,6 +104,17 @@ class DataTransformation:
             train_arr= np.c_(input_feature_train_arr, np.array(target_feature_train_df))
             test_arr= np.c_(input_feature_test_arr, np.array(target_feature_test_df))
 
+            save_obj(
+                file_path= self.data_transformation_config.preprocessor_obj_file_path, obj= preprocessing_obj
+            )
+
+            logging.info("Pickle file saved")
+
+            return(
+                train_arr,
+                test_arr,
+                self.data_transformation_config.preprocessor_obj_file_path
+            )
 
             
         except Exception as e:
