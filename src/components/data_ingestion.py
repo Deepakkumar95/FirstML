@@ -7,6 +7,7 @@ from sklearn.model_selection import train_test_split
 from dataclasses import dataclass
 
 
+
 #Initialize the Data Ingestion Configuration
 
 @dataclass
@@ -23,7 +24,7 @@ class DataIngestion:
     def initiate_data_ingestion(self):
         logging.info("data ingestion method starts")
         try:
-            df= pd.read_csv("/notebook/data/gemstone.csv")
+            df= pd.read_csv(os.path.join("/config/workspace/FirstML/src/notebook/data", "gemstone.csv"))
             logging.info("dataset read as pandas dataframe")
 
             os.makedirs(os.path.dirname(self.ingestion_config.raw_data_path), exist_ok=True)
@@ -32,8 +33,8 @@ class DataIngestion:
             logging.info("Train Test Split")
             train_set, test_set= train_test_split(df, test_size=0.3, random_state=42)
 
-            train_set.to_csv(self.ingestion_config.raw_data_path, index=False, header= True)
-            test_set.to_csv(self.ingestion_config.raw_data_path, index=False, header= True)
+            train_set.to_csv(self.ingestion_config.train_data_path, index=False, header= True)
+            test_set.to_csv(self.ingestion_config.test_data_path, index=False, header= True)
 
             logging.info("Ingestion of data is completed")
 
