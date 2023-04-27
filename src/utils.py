@@ -12,7 +12,7 @@ from src.exception import CustomException
 from src.logger import logging
 
 
-def save_obj(file_path):
+def save_obj(file_path, obj):
     try:
         dir_path= os.path.dirname(file_path)
         os.makedirs(dir_path, exist_ok= True)
