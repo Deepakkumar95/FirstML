@@ -29,4 +29,10 @@
     git commit -m "first commit"
 
     git push -u origin main
-    
+
+    git rm -r --cached ven/ "Remove venv from tracking"
+
+    git commit -m "Remove venv from tracking"
+
+~~~
+
