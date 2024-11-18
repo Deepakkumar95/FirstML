@@ -1,18 +1,32 @@
-# End to End Machine Learning Project
+##End to End ML Project
 
-## Created an Environment
-"""
+###Created a new environment
+~~~
+    conda create -p venv python=3.8
 
-conda create -p venv python=3.8
+    conda activate venv/
+~~~
 
-conda activate venv/
+###Install all necessary libraries
 
-"""
+~~~
+    pip install -r install requirements.txt
+~~~
 
-### Install all the necessary library mentioned in requirements.txt
-"""
+###git command
 
-pip install -r requirements.txt
+~~~
+    ls -a
 
-"""
+    git remote -v
 
+    git remote rm origin
+
+    git add .
+
+    git status
+
+    git commit -m "first commit"
+
+    git push -u origin main
+    
